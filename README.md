@@ -7,7 +7,7 @@ Added more Mocha tests based on the original tests in thte tutorial: https://www
 
 For now it seems that it won't be easy, or even possible, to write tests that can test front + back end, just like when testing ReactJS/Redux + NodeJS with Jest + Enzyme, for now the input to backend can only be simulated/hardcoded, and for the front end in the todo-list the tasks contained in the controller also have to be hard-coded.
 
-The aspects that can test with backend: mostly just function calls, but because some meteor built-in functions such as meteor.userId() cannot be called when doing the test, mock function for each real function is needed to run the test.
+The aspects that can test with backend: mostly just function calls, but because some meteor built-in functions such as meteor.userId() cannot be called when doing the test, mock function for each real function is needed to run the test, the error thrown for bad result can be tested too.
 
 The asepcts that can test with frontend: certain UI element values, such as the value for a checkbox(on/off), value for an input field, or the number of li elements contained in the ul element; controller and its function calls, mostly just checking if a meteor method is called and if it's called with the appropriate parameters provided by the frontend.
 
