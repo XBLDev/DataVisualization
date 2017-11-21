@@ -1,0 +1,34 @@
+<header>
+    <!-- <h1>Todo List ( {{$ctrl.incompleteCount}} )</h1> -->
+    <h1>Todo List ( {{incompleteCount}} )</h1>
+    
+     <label class="hide-completed">
+        <input type="checkbox" ng-model="hideCompleted"/>
+        Hide Completed Tasks
+    </label>
+
+    
+    <login-buttons></login-buttons>
+    
+    <form class="new-task" ng-submit="addTask(newTask)" ng-show="currentUser">
+      <input ng-model="newTask" type="text" name="text" placeholder="Type to add new tasks"/>
+    </form> 
+    
+  </header>
+   
+  <ul>
+    <li ng-repeat="task in tasks" ng-class="{'checked': task.checked, 'private': task.private}">
+      <button class="delete" ng-click="removeTask(task)">&times;</button>
+   
+      <input type="checkbox" ng-checked="task.checked" ng-click="setChecked(task)" class="toggle-checked"/>
+   
+      <span class="text">
+        <strong>{{task.username}}</strong> - {{task.text}}
+      </span>
+
+      <button class="toggle-private" ng-click="setPrivate(task)" ng-show="task.owner === currentUser._id">
+        {{task.private == true ? "Private" : "Public"}}
+      </button>
+
+    </li>
+  </ul>
