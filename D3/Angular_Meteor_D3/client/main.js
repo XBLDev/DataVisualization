@@ -6,6 +6,8 @@ import mainPageTemplate from "../imports/components/routedPages/entryPage.html";
 import redTemplate from "../imports/components/routedPages/red.html";
 import greenTemplate from "../imports/components/routedPages/green.html";
 import blueTemplate from "../imports/components/routedPages/blue.html";
+import routingwithParamTemplate from "../imports/components/routedPages/routingwithParam.html";
+
 import todolistTemplate from "../imports/components/todosListRouted/todosList.html";
 import D3SimpleTemplate from "../imports/components/d3Experiments/D3Simple.html";
 import d3_N_Body_II_Template from "../imports/components/d3Experiments/d3_N_Body_II.html";
@@ -15,6 +17,8 @@ import d3_DensityContours_Template from "../imports/components/d3Experiments/D3D
 import d3_ScatterplotMatrix_Template from "../imports/components/d3Experiments/D3ScatterplotMatrix.html";
 import d3_ForceDirectedGraph_Template from "../imports/components/d3Experiments/D3ForceDirectedGraph.html";
 import d3_Tooltip_Template from "../imports/components/d3Experiments/D3Tooltip.html";
+
+import responsive_Template from "../imports/components/ResponsiveAngularJS/ResponsivePage.html";
 
 // import d3_N_Body_II_Controller from 'controllers/d3_N_Body_II_Controller.js';
 
@@ -52,19 +56,10 @@ app.config(function($routeProvider) {
       templateUrl : mainPageTemplate
       
   })
-  .when("/red", {
-      // templateUrl : "routedPages/red.html"
-      templateUrl : redTemplate
-      
-  })
-  .when("/green", {
-      // templateUrl : "routedPages/green.html"
-      templateUrl : greenTemplate
-      
-  })
-  .when("/blue", {
-      // templateUrl : "routedPages/blue.html"
-      templateUrl : blueTemplate
+  .when("/responsivePage", {
+    // templateUrl : "routedPages/blue.html"
+    templateUrl : responsive_Template,
+    // controller: "todolistController"
   })
   .when("/todopage", {
     // templateUrl : "routedPages/blue.html"
@@ -109,6 +104,11 @@ app.config(function($routeProvider) {
     templateUrl : d3_Tooltip_Template,
     controller: "d3_Tooltip_Controller"
   })
+  .when("/product/:id", {
+    // templateUrl : "routedPages/blue.html"
+    templateUrl : routingwithParamTemplate,
+    controller: "routingwithParam_Controller"
+  })
   // .when("/d3_DensityContours", {
   //   // templateUrl : "routedPages/blue.html"
   //   templateUrl : d3_DensityContours_Template,
@@ -119,6 +119,11 @@ app.config(function($routeProvider) {
   });
 });
 
+app.controller("routingwithParam_Controller", function ($scope, $routeParams) {
+  // console.log($routeParams.id);
+  $scope.param = $routeParams.id;
+});
+  
 app.controller("d3_Tooltip_Controller", function ($scope) {
   var margin = {top: 40, right: 20, bottom: 30, left: 40},
   width = 960 - margin.left - margin.right,
@@ -740,13 +745,25 @@ app.controller("todolistController", function ($scope) {
   });
 
   $scope.addTask = function(newTask){
-    Meteor.call('tasks.insert', newTask);
+    console.log('addTask called, newTask: ', newTask);
+    
+    Meteor.call('tasks.insert', newTask, function(error, result){
+      if(error)
+      {
+        console.log(error);
+      }
+      if(result)
+      {
+        console.log(result);
+      }
+    });
     $scope.newTask = '';  
   }
   $scope.setChecked = function(task){
     Meteor.call('tasks.setChecked', task._id, !task.checked);
   }
   $scope.removeTask = function(task){
+    console.log('removeTask called, task text: ', task.text);
     Meteor.call('tasks.remove', task._id);
   }
   $scope.setPrivate = function(task){

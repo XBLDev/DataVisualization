@@ -1,6 +1,11 @@
 # DataVisualization
 Data visualization exercise, for now with D3.js and Python(matplotlib, seaborn etc)
 
+Comment 30/11/2017, 3:42 pm:
+
+Added one responsive page which uses Bootstrap styling, with nav-bar on top which contains menu items and will shrink into a button on the right when the screen is too small, and 12 col grid in the middle with 2 col wide links on the left, 8 col wide center area, and 2 col wide
+well class menu list on the right.
+
 Comment 21/11/2017, 8:10 pm:
 
 Added more Mocha tests based on the original tests in thte tutorial: https://www.meteor.com/tutorials/angular/testing

@@ -3,14 +3,14 @@
     <!-- <h1>Todo List ( {{incompleteCount}} )</h1> -->
     
     <label class="hide-completed">
-        <input type="checkbox" ng-model="$ctrl.hideCompleted"/>
+        <input id="headerinput" type="checkbox" ng-model="$ctrl.hideCompleted"/>
         Hide Completed Tasks
     </label>
 
     <login-buttons></login-buttons>
     
     <form class="new-task" ng-submit="$ctrl.addTask($ctrl.newTask)" ng-show="$ctrl.currentUser">
-      <input ng-model="$ctrl.newTask" type="text" name="text" placeholder="Type to add new tasks"/>
+      <input id="headerinput" ng-model="$ctrl.newTask" type="text" name="text" placeholder="Type to add new tasks"/>
     </form>
     
   </header>

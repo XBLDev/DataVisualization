@@ -48,6 +48,8 @@ class TodosListCtrl {
     }
     
     addTask(newTask) {
+        // console.log('addTask called, newTask: ', newTask);
+        
         // Insert a task into the collection
         // Tasks.insert({
         //   text: newTask,
@@ -71,7 +73,9 @@ class TodosListCtrl {
     }
 
     removeTask(task) {
+        // console.log('removeTask called, _id: ', task._id);
         // Tasks.remove(task._id);
+        // console.log(task._id);
         Meteor.call('tasks.remove', task._id);
     }
 

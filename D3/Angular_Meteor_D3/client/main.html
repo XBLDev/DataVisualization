@@ -9,7 +9,10 @@
 
 
 <head>
-    <title>Routing</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    
+    <title>AngularJS Experiments</title>
     
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <!-- <script src="https://d3js.org/d3.v4.min.js"></script>    -->
@@ -23,6 +26,77 @@
     <link rel=”stylesheet” type=”text/css” href="main.css">
     <link rel=”stylesheet” type=”text/css” href="d3Style.css">
     
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <style>
+        /* html,body{
+        height: 100%
+        } */
+        #ngviewcontainer{
+          /* margin-left: 0; */
+          width: 100%;
+          background-color: purple;
+          min-height: 20vh;
+        }
+        #respPage{
+          /* margin-left: 0; */
+          /* min-height: 50vh; */
+          background-color: yellow;
+          width: 100%;
+          /* height: 100%; */
+        }
+        .col-sm-2 sidenav{
+          border: 1px;
+          border-color: grey;
+        }
+        /* Remove the navbar's default margin-bottom and rounded borders */ 
+        .navbar {
+          /* z-index: 0;
+          position: fixed; */
+    
+          margin-bottom: 0;
+          border-radius: 0;
+        }
+        
+        /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+        .row.content {height: 450px}
+        
+        /* Set gray background color and 100% height */
+        .sidenav {
+          padding-top: 20px;
+          /* background-color: #f1f1f1; */
+          height: 100%;
+        }
+        #rightsidemenu{
+          background-color: green;
+        }
+        #middlearea{
+          background-color: greenyellow;
+        }
+        .container{
+          min-height: 100%;
+          background-color: #fff;
+        }
+        /* Set black background color, white text and some padding */
+        footer {
+          background-color: #555;
+          color: white;
+        }
+        /* On small screens, set height to 'auto' for sidenav and grid */
+        @media screen and (max-width: 767px) {
+          .sidenav {
+            height: auto;
+            padding: 15px;
+          }
+          .row.content {height:auto;} 
+        }
+      </style>
+
+
+
+
 </head>
 <body>
     <div>
@@ -41,6 +115,14 @@
       <a href="#d3_Scatterplotmatrix">d3_Scatterplotmatrix</a>
       <a href="#d3_tooltips">d3_tooltips</a>
       
+      <p>
+      <a href="#product/1">routing with param:1</a>
+      <a href="#product/2">routing with param:2</a>
+      </p>
+
+      <p>
+        <a href="#responsivePage">responsive_Angular</a>
+      </p>
       <!-- <a href="#d3_ForceDirectedGraph">d3_ForceDirectedGraph</a> -->
       
       </p>
@@ -48,6 +130,6 @@
     </div>
 
     <div ng-app="myApp" class="container">
-       <div ng-view></div> 
+       <div ng-view class="container-fluid" id="ngviewcontainer"></div> 
     </div> 
 </body>
